@@ -66,7 +66,6 @@
 ## 七、功能展示
 
 <p align="center">
-  <img src="images/图片1.png" width="320"/>
   <img src="images/图片2.png" width="320"/>
 </p>
 <p align="center">
