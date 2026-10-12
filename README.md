@@ -50,6 +50,7 @@ flowchart LR
 - **多模型融合**：组合使用 MediaPipe 的 Hands（手部 21 关键点）、Pose（人体姿态）与 Holistic（全身融合）模型，提升手势与姿态表达的覆盖面。
 - **工程化与可移植**：Web 端封装为可安装、可离线的 PWA；移动端通过 WebView 外壳打包为 APK；整体以静态资源形式一键托管部署。
 - **问题驱动优化**：针对实时性、复杂光照/背景下的关键点稳定性、低端设备性能等难点持续调优（详见“当前局限”）。
+- **源码开放**：识别核心逻辑位于 `frontend/src/utils/gestureEngine.ts`（关键点 → 手势分类），词库结构化数据见 `vocab/existing_vocab.json`，识别/词库分析脚本见 `tools/`，便于审阅与二次开发。
 
 ## 五、性能指标
 
@@ -67,16 +68,39 @@ flowchart LR
 
 ```
 手语即时通/
-├── index.html                 # Web 应用入口
-├── assets/                    # 前端构建资源（JS / CSS）
-├── mediapipe/                 # 手语识别模型文件（.tflite）
-│   ├── hand_landmark_full.tflite
-│   └── pose_landmark_full.tflite
+├── index.html / assets/ / mediapipe/ / manifest.webmanifest   # 已构建的可部署站点（根目录，供 GitHub Pages 直接托管）
 ├── shouyu-app-v1.0.apk        # Android 安装包
-├── manifest.webmanifest       # PWA 配置文件
 ├── images/                    # 功能展示图片
-├── LICENSE                    # 开源许可证
+├── frontend/                  # 网页前端源码（React + TypeScript + Vite）
+│   ├── src/
+│   │   ├── utils/gestureEngine.ts     # 手势识别核心引擎（关键点 → 手势分类）
+│   │   ├── utils/features.ts          # 手部特征提取
+│   │   ├── utils/mediapipeLoader.ts   # MediaPipe 模型加载
+│   │   ├── hooks/useMediaPipe.ts      # 实时推理 Hook
+│   │   ├── data/vocabulary.ts         # 手语词库数据
+│   │   ├── data/fingerspelling.ts     # 手指拼写数据
+│   │   ├── pages/  components/  hooks/ ...
+│   ├── package.json / vite.config.ts / tsconfig*.json / tailwind.config.js / capacitor.config.ts
+│   └── index.html
+├── tools/                     # 词库与识别逻辑分析脚本（Python）
+│   ├── analyze*.py  extract.py  verify.py  download_all.py  spa_server.py
+├── vocab/                     # 手语词库数据与扩充
+│   ├── existing_vocab.json            # 现有词库（结构化数据：词/拼音/别名/分类/手型编码/要领）
+│   ├── 手语词库_新增60词.js / .json   # 新增 60 词扩充
+│   └── patch.mjs  smoke_test.mjs  新增词库60词速览.html
+├── LICENSE
 └── README.md
+```
+
+> 根目录为**已构建产物**，可直接由 GitHub Pages / Netlify 托管；`frontend/` 为**可独立构建的源码工程**。
+
+### 本地开发与构建
+
+```bash
+cd frontend
+npm install
+npm run build        # 产物输出至 frontend/dist/
+npm run dev          # 本地开发预览
 ```
 
 ## 七、使用方式
