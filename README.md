@@ -65,27 +65,14 @@
 
 ## 七、功能展示
 
+| | | |
+|:---:|:---:|:---:|
+| <img src="images/图片2.png" width="220"/> | <img src="images/图片3.png" width="220"/> | <img src="images/图片4.png" width="220"/> |
+| <img src="images/图片5.png" width="220"/> | <img src="images/图片6.png" width="220"/> | <img src="images/图片7.png" width="220"/> |
+| <img src="images/图片8.png" width="220"/> | <img src="images/图片10.png" width="220"/> | <img src="images/图片11.png" width="220"/> |
+
 <p align="center">
-  <img src="images/图片2.png" width="320"/>
-</p>
-<p align="center">
-  <img src="images/图片3.png" width="320"/>
-  <img src="images/图片4.png" width="320"/>
-</p>
-<p align="center">
-  <img src="images/图片5.png" width="320"/>
-  <img src="images/图片6.png" width="320"/>
-</p>
-<p align="center">
-  <img src="images/图片7.png" width="320"/>
-  <img src="images/图片8.png" width="320"/>
-</p>
-<p align="center">
-  <img src="images/图片9.png" width="320"/>
-  <img src="images/图片10.png" width="320"/>
-</p>
-<p align="center">
-  <img src="images/图片11.png" width="320"/>
+  <img src="images/图片9.png" width="360"/>
 </p>
 
 ## 八、项目进展与成果
